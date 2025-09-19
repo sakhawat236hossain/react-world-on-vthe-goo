@@ -1,14 +1,20 @@
 import Countries from './components/countries/countries'
 import './App.css'
+import { Suspense } from 'react'
 
+
+const countriesPromise = fetch('https://openapi.programming-hero.com/api/all')
+.then(res=>res.json())
 function App() {
-  // const [count, setCount] = useState(0)
+  
 
   return (
     <>
      
      
-     <Countries></Countries>
+    <Suspense  fallback={<p>waiting for message...</p>}>
+      <Countries countriesPromise={countriesPromise}></Countries>
+    </Suspense>
     </>
   )
 }
