@@ -21,7 +21,35 @@ const Countries = ({ countriesPromise }) => {
   const countries = countriesData.countries;
 
   // console.log(countries);
-
+  return (
+    <div>
+      <h1>you,Me and baby visited countries: {countries.length}</h1>
+          <h2>Total country visited {visitedCountries.length}</h2>
+          <h3>Total Visited Flags: {VisitedFlag.length}</h3>
+      <ol>
+        {
+          visitedCountries.map(country=> <li
+          key={country.cca3.cca3}
+          >{country.name.common}</li>)
+        }
+      </ol>
+      <div className="visited-flags-containar">
+        {
+          VisitedFlag.map((flag, index)=> <img key={index} src={flag}></img>)
+        }
+      </div>
+      <div className="countries">
+        {countries.map((country) => (
+          <Country key={country.cca3.cca3} country={country}
+           handelVisitedCountry={handelVisitedCountry} 
+            handelVisitedFlag={ handelVisitedFlag}
+           >
+            
+          </Country>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Countries;
